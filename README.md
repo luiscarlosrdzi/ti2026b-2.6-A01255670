@@ -1,4 +1,6 @@
-# TI2006B Capstone Project Repository
+# TI2006B 
+Luis Carlos Rodriguez iribe
+6 de noviembre 2026
 
 Template for a reproducible business-intelligence, analytics, data-engineering, or machine-learning capstone project.
 
