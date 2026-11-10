@@ -1,8 +1,9 @@
-name: ti2006b-capstone
+name: ti2006b-workbench
 channels:
   - conda-forge
 dependencies:
   - python=3.12
+  - jupyter
   - jupyterlab>=4,<5
   - ipykernel>=6
   - nbconvert>=7,<8

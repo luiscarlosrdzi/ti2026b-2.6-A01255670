@@ -54,12 +54,12 @@ This template is designed for Visual Studio Code and Anaconda. Power BI and Tabl
 
 ```bash
 conda env create -f environment.yml
-conda activate ti2006b-capstone
+conda activate ti2006b-workbench
 code .
 jupyter lab
 ```
 
-In VS Code, open a notebook and select the `ti2006b-capstone` kernel from the top-right kernel picker. The dashboard applications are installed and managed separately according to team or institution policy.
+In VS Code, open a notebook and select the `ti2006b-workbench` kernel from the top-right kernel picker. The dashboard applications are installed and managed separately according to team or institution policy.
 
 ## Suggested capstone milestones
 
