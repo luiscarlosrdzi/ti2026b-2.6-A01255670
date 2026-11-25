@@ -8,17 +8,17 @@ Esta carpeta concentra todo el trabajo del reto, en el orden en que se construy�
 
 | Carpeta | Qué es | Estado |
 | --- | --- | --- |
-| [`fase1_python/`](fase1_python) | Primera limpieza: lee los dos Excel originales (bitácora + Reporting Factory) con pandas, calcula volúmenes diarios/mensuales y concilia contra Reporting Factory | Fase 1 |
-| [`etapa2_sql/`](etapa2_sql) | Limpieza más rigurosa en SQL/SQLite, en capas bronce/plata/oro: ingesta cruda, perfilado y hallazgos, reglas de limpieza (interpolación, detección de error de unidad, KPIs, semáforo), consultas de resultados, y el esquema en estrella para Power BI | Etapa 2 y 4 |
+| [`etapa2_sql/`](etapa2_sql) | Limpieza en SQL/SQLite, en capas bronce/plata/oro: ingesta cruda, perfilado y hallazgos, reglas de limpieza (interpolación, detección de error de unidad, KPIs, semáforo), consultas de resultados, y el esquema en estrella para Power BI | Etapa 2 y 4 |
 | [`etapa3_modelo_dimensional/`](etapa3_modelo_dimensional) | Diseño del modelo dimensional (metodología Kimball): documento con la tabla de hechos, las 3 dimensiones, y el diagrama del esquema en estrella | Etapa 3 |
+
+Hubo una primera versión de la limpieza en Python/pandas (prototipo inicial), pero se descartó: hacía lo mismo que `etapa2_sql/` con menos trazabilidad, así que no tiene sentido mantener dos pipelines que resuelven el mismo problema. La versión en SQL es la única vigente.
 
 ## Flujo del proyecto
 
 1. **Fuentes originales** (no se suben al repo por confidencialidad): `Bitacora descargas 2026.xlsx` (una hoja por planta, formato CONAGUA) y `ReportingFactory Ene26 - Oct26.xlsx` (exportación de la plataforma corporativa).
-2. **Fase 1** (`fase1_python/limpieza.py`): primera versión de la limpieza y conciliación, en pandas.
-3. **Etapa 2** (`etapa2_sql/`): se reconstruyó todo en SQL sobre SQLite para que cada regla de limpieza sea una consulta auditable. Termina en `fact_mensual` con los 4 KPI del reto y el semáforo.
-4. **Etapa 3** (`etapa3_modelo_dimensional/`): diseño conceptual del modelo dimensional sobre `fact_mensual` — tabla de hechos `FACT_CONCILIACION_MENSUAL` y 3 dimensiones (`DIM_PLANTA`, `DIM_TIEMPO_MES`, `DIM_DIAGNOSTICO`).
-5. **Etapa 4** (`etapa2_sql/modelo_estrella.sql` + `exportar_modelo_estrella.py`): materializa ese modelo dimensional como tablas físicas en la base y las exporta a Excel para conectar Power BI. El dashboard (`.pbix`) y el Excel con datos reales no se suben al repo por confidencialidad.
+2. **Etapa 2** (`etapa2_sql/`): limpieza en SQL sobre SQLite, para que cada regla sea una consulta auditable. Termina en `fact_mensual` con los 4 KPI del reto y el semáforo.
+3. **Etapa 3** (`etapa3_modelo_dimensional/`): diseño conceptual del modelo dimensional sobre `fact_mensual` — tabla de hechos `FACT_CONCILIACION_MENSUAL` y 3 dimensiones (`DIM_PLANTA`, `DIM_TIEMPO_MES`, `DIM_DIAGNOSTICO`).
+4. **Etapa 4** (`etapa2_sql/modelo_estrella.sql` + `exportar_modelo_estrella.py`): materializa ese modelo dimensional como tablas físicas en la base y las exporta a Excel para conectar Power BI. El dashboard (`.pbix`) y el Excel con datos reales no se suben al repo por confidencialidad.
 
 ## KPIs y semáforo
 
