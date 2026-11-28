@@ -32,8 +32,9 @@ Plotly charts (histogram + box plot) over the synthetic `desviacion_pct` dataset
 it interactively in Databricks:
 
 - Total rows: `240` · Missing `desviacion_pct`: `3` · Analyzed rows: `237`
-- Mean / median / sample std / min / max / quartiles: _paste from the `describe()` output here_
-- Grouped counts by `planta` reconcile to `237`: _yes/no, paste the table_
+- Mean: `2.66` · Median: `2.08` · Sample std: `2.06` · Min: `0.50` · Max: `17.11` · Q1: `1.38` · Q3: `3.23`
+- Grouped counts by `planta` reconcile to `237`: **yes** — `Planta_A: 78 (mean 2.61, median 2.37)`,
+  `Planta_B: 79 (mean 2.56, median 1.90)`, `Planta_C: 80 (mean 2.80, median 2.02)`; `78+79+80 = 237`.
 
 ## 3. GitHub workflow evidence
 
